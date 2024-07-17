@@ -15,8 +15,6 @@ public class HintShardingAlgorithm
         implements org.apache.shardingsphere.api.sharding.hint.HintShardingAlgorithm<String> {
     @Override
     public Collection<String> doSharding(Collection<String> availableTargetNames, HintShardingValue<String> shardingValue) {
-        System.out.println("shardingValue=" + shardingValue);
-        System.out.println("availableTargetNames=" + availableTargetNames);
         List<String> shardingResult = new ArrayList<>();
         for (String value : shardingValue.getValues()) {
             if (availableTargetNames.contains(value)) {

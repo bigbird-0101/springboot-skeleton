@@ -28,7 +28,7 @@ public class DataSyncTask {
     @Resource
     private ProductSyncDataServiceImpl productSyncDataService;
 
-    @Scheduled(cron = "0/5 * * * * ?")
+//    @Scheduled(cron = "0/5 * * * * ?")
     public void syncData() {
         log.info("+++++++++++++++++++++定时任务dump+++++++++++++++++++++");
         //上次任务结束，发起本次

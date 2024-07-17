@@ -2,13 +2,17 @@ package com.nango.skeletonweb.interfaces;
 
 import com.nango.skeletonweb.domain.entity.UserDO;
 import com.nango.skeletonweb.domain.service.UserService;
+import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 /**
@@ -32,7 +36,7 @@ public class UserController {
             UserDO userDO = new UserDO();
             userDO.setEmail("safasfsaf");
             userDO.setUserName("safasfsaf");
-            userDO.setNickname("safasfsaf");
+            userDO.setNickName("safasfsaf");
             userDO.setPassword("123456");
             userDO.setAge(100);
             userDO.setBalance(BigDecimal.TEN);
@@ -42,6 +46,11 @@ public class UserController {
 
         userService.saveBatch(userOrderDOS);
         return "success";
+    }
+
+    @GetMapping("/get-user/{id}")
+    public UserDO save(@PathVariable("id") BigInteger id) {
+        return userService.getById(id);
     }
 
     @RequestMapping("createTable")

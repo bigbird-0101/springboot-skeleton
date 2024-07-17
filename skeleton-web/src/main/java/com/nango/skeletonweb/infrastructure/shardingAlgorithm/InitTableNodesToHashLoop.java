@@ -2,6 +2,7 @@ package com.nango.skeletonweb.infrastructure.shardingAlgorithm;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shardingsphere.core.rule.ShardingDataSourceNames;
 import org.apache.shardingsphere.core.rule.ShardingRule;
 import org.apache.shardingsphere.core.rule.TableRule;
 import org.apache.shardingsphere.shardingjdbc.jdbc.core.datasource.ShardingDataSource;
@@ -29,12 +30,14 @@ public class InitTableNodesToHashLoop {
 
     @Getter
     private HashMap<String, SortedMap<Long, String>> tableVirtualNodes = new HashMap<>();
+    private HashMap<String, SortedMap<Long, String>> dbVirtualNodes = new HashMap<>();
 
     @PostConstruct
     public void init() {
         try {
             ShardingRule rule = shardingDataSource.getRuntimeContext().getRule();
             Collection<TableRule> tableRules = rule.getTableRules();
+            ShardingDataSourceNames shardingDataSourceNames = rule.getShardingDataSourceNames();
             ConsistentHashAlgorithm consistentHashAlgorithm = new ConsistentHashAlgorithm();
             for (TableRule tableRule : tableRules) {
                 String logicTable = tableRule.getLogicTable();
@@ -47,6 +50,7 @@ public class InitTableNodesToHashLoop {
                                         .collect(Collectors.toList()))
                 );
             }
+            System.out.println();
         } catch (Exception e) {
             log.error("分表节点初始化失败 {}", e);
         }

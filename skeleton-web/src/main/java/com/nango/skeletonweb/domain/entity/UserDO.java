@@ -19,7 +19,7 @@ public class UserDO {
     @TableId(value = "id")
     private String id;
     private String userName;
-    private String nickname;
+    private String nickName;
     private int age;
     private String password;
     private BigDecimal balance;

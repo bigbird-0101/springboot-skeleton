@@ -17,14 +17,13 @@ import java.util.SortedMap;
  * @Description 分表策略
  */
 public class ConsistentShardingAlgorithm
-        implements PreciseShardingAlgorithm<Long>, RangeShardingAlgorithm<Long> {
-
+        implements PreciseShardingAlgorithm<Long>{
     /**
      * 精确分片
      *
      * @param availableTargetNames available data sources or tables's names
      * @param shardingValue        skeletonweb value
-     * @return skeletonweb result for data source or table's name
+     * @return skeleton result for data source or table's name
      */
     @Override
     public String doSharding(Collection<String> availableTargetNames, PreciseShardingValue<Long> shardingValue) {
@@ -44,18 +43,5 @@ public class ConsistentShardingAlgorithm
                 availableTargetNames);
 
         return consistentHashAlgorithm.getTableNode(String.valueOf(shardingValue.getValue()));
-    }
-
-    /**
-     * 范围查询规则
-     * Sharding.
-     *
-     * @param availableTargetNames available data sources or tables's names
-     * @param shardingValue        skeletonweb value
-     * @return skeletonweb results for data sources or tables's names
-     */
-    @Override
-    public Collection<String> doSharding(Collection<String> availableTargetNames, RangeShardingValue<Long> shardingValue) {
-        return availableTargetNames;
     }
 }
