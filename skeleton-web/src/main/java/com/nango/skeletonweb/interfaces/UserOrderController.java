@@ -3,12 +3,15 @@ package com.nango.skeletonweb.interfaces;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.nango.skeletonweb.domain.entity.UserOrderDO;
 import com.nango.skeletonweb.domain.service.UserOrderService;
+import org.apache.shardingsphere.api.hint.HintManager;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * @Author wyn
@@ -34,6 +37,7 @@ public class UserOrderController {
             userOrderDO.setOrderNo(String.valueOf(System.currentTimeMillis()));
             userOrderDO.setUserId((long) 123);
             userOrderDO.setAmount(500);
+            userOrderDO.setCreateTime(new Date());
             userOrderDOS.add(userOrderDO);
         }
 

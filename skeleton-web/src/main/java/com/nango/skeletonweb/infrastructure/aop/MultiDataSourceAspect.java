@@ -29,6 +29,7 @@ public class MultiDataSourceAspect {
         HintManager.clear();
         HintManager hintManager = HintManager.getInstance();
         hintManager.setDatabaseShardingValue("ds0");
+        hintManager.addTableShardingValue("t_user_order", "1231111");
     }
 
     /**

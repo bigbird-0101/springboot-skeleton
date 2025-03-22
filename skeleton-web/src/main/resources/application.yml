@@ -37,23 +37,22 @@ spring:
             standard:
               sharding-column: id
               precise-algorithm-class-name: com.nango.skeletonweb.infrastructure.shardingAlgorithm.ConsistentShardingAlgorithm
-#        t_address:  #t_address
-#          key-generator-column-name: id  #主键 通过雪花算法生成
-#          actual-data-nodes: ds0.t_address${0..1}
-#          table-strategy:  #分表策略
-#            inline:
-#              sharding-column: id
-#              algorithm-expression: t_address${id % 2}
-#
-#        t_user_order:
-#          key-generator-column-name: id  #主键
-#          #数据节点,数据库中t_user_order20200，t_user_order20201,t_user_order20202
-#          # #数据节点,数据库中t_user_order20210，t_user_order20211,t_user_order20212
-#          actual-data-nodes: ds0.t_user_order${2020..2021}${0..2}    #数据节点,均匀分布
-#          table-strategy:  #分表策略
-#            complex: #行表达式
+        t_address:  #t_address
+          actual-data-nodes: ds0.t_address${0..1}
+          table-strategy:  #分表策略
+            inline:
+              sharding-column: id
+              algorithm-expression: t_address${id % 2}
+
+        t_user_order:
+          #数据节点,数据库中t_user_order20200，t_user_order20201,t_user_order20202
+          # #数据节点,数据库中t_user_order20210，t_user_order20211,t_user_order20212
+          actual-data-nodes: ds0.t_user_order${2020..2021}${0..2}    #数据节点,均匀分布
+          table-strategy:  #分表策略
+            hint: #行表达式
 #              sharding-columns: user_id,create_time
 #              algorithm-class-name: com.nango.skeletonweb.infrastructure.shardingAlgorithm.ComplexShardingAlgorithm
+              algorithm-class-name: com.nango.skeletonweb.infrastructure.shardingAlgorithm.HintShardingAlgorithm
 #
 #        t_product_new:
 #          key-generator-column-name: id  #主键 通过雪花算法生成

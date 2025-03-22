@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @Author wyn
@@ -19,5 +20,5 @@ public class UserOrderDO
     private String orderNo;
     private Long userId;
     private Integer amount;
-    private LocalDateTime createTime;
+    private Date createTime;
 }

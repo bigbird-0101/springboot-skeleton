@@ -1,11 +1,52 @@
-create table t_user_order
+create table t_user_order20200
 (
     id       bigint not null primary key ,
     order_no varchar(32),
-    userId bigint,
+    user_id bigint,
     amount decimal(10,2),
     create_time datetime default current_timestamp
 );
+create table t_user_order20201
+(
+    id       bigint not null primary key ,
+    order_no varchar(32),
+    user_id bigint,
+    amount decimal(10,2),
+    create_time datetime default current_timestamp
+);
+create table t_user_order20202
+(
+    id       bigint not null primary key ,
+    order_no varchar(32),
+    user_id bigint,
+    amount decimal(10,2),
+    create_time datetime default current_timestamp
+);
+create table t_user_order20210
+(
+    id       bigint not null primary key ,
+    order_no varchar(32),
+    user_id bigint,
+    amount decimal(10,2),
+    create_time datetime default current_timestamp
+);
+create table t_user_order20211
+(
+    id       bigint not null primary key ,
+    order_no varchar(32),
+    user_id bigint,
+    amount decimal(10,2),
+    create_time datetime default current_timestamp
+);
+create table t_user_order20212
+(
+    id       bigint not null primary key ,
+    order_no varchar(32),
+    user_id bigint,
+    amount decimal(10,2),
+    create_time datetime default current_timestamp
+);
+
 
 create table t_user0
 (
